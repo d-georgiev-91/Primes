@@ -70,7 +70,7 @@
         </member>
         <member name="T:Primes.Web.Validators.IsPrimeRequestValidator">
             <summary>
-            Validator class for <see cref="T:Primes.Web.Models.IsPrimeRequest" />
+            Validator class for <see cref="T:Primes.Web.Validators.IsPrimeRequestValidator" />
             </summary>
         </member>
         <member name="M:Primes.Web.Validators.IsPrimeRequestValidator.#ctor">
