@@ -7,8 +7,8 @@ namespace Primes.Web
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<IPrimeNumberService>()
-                .As<PrimeNumberService>()
+            builder.RegisterType<PrimeNumberService>()
+                .As<IPrimeNumberService>()
                 .InstancePerLifetimeScope();
         }
     }
