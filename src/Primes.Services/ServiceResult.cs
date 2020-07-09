@@ -29,6 +29,20 @@ namespace Primes.Services
 
     public class ServiceResult<TData> : ServiceResult
     {
+        public static ServiceResult<TData> Create(TData data = default)
+        {
+            var serviceResult = new ServiceResult<TData> { Data = data };
+
+            return serviceResult;
+        }
+
+        public new ServiceResult<TData> AddError(ErrorType type, string message)
+        {
+            base.AddError(type, message);
+
+            return this;
+        }
+
         public TData Data { get; set; }
     }
 }
