@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Primes.Web</name>
+    </assembly>
+    <members>
+        <member name="T:Primes.Web.AutofacModule">
+            <summary>
+            Autofac module for application
+            </summary>
+        </member>
+        <member name="M:Primes.Web.AutofacModule.Load(Autofac.ContainerBuilder)">
+            <inheritdoc cref="M:Autofac.Module.Load(Autofac.ContainerBuilder)" />
+        </member>
+        <member name="T:Primes.Web.Controllers.PrimeNumbersController">
+            <summary>
+            Controller for Prime numbers discovery and verification
+            </summary>
+        </member>
+        <member name="M:Primes.Web.Controllers.PrimeNumbersController.#ctor(Primes.Services.IPrimeNumberService)">
+            <summary>
+            Creates an instance of <inheritdoc cref="T:Primes.Web.Controllers.PrimeNumbersController"/>
+            </summary>
+            <param name="primeNumberService">Dependency to <inheritdoc cref="T:Primes.Services.IPrimeNumberService"/></param>
+        </member>
+        <member name="M:Primes.Web.Controllers.PrimeNumbersController.IsPrime(Primes.Web.Models.IsPrimeRequest)">
+            <summary>
+            Returns if a number is a prime or not
+            </summary>
+            <param name="isPrimeRequest">Model of type <seealso cref="T:Primes.Web.Models.IsPrimeRequest"/></param>
+            <returns>
+            <response code="200">
+            Returns boolean value showing if number is primer or not
+            </response>
+            </returns>
+        </member>
+        <member name="M:Primes.Web.Controllers.PrimeNumbersController.NextPrime(Primes.Web.Models.NextPrimeRequest)">
+            <summary>
+            Find the next prime number greater than the given
+            </summary>
+            <param name="nextPrimeRequest">Model of type <seealso cref="T:Primes.Web.Models.NextPrimeRequest"/></param>
+            <returns>
+            <response code="400">
+            Returns error message if next number is out of positive 64 bits integers range
+            </response>
+            <response code="200">
+            Returns ulong value representing the next prime
+            </response>
+            </returns>
+        </member>
+        <member name="T:Primes.Web.Models.IsPrimeRequest">
+            <summary>
+            Model holding information of is prime number request
+            </summary>
+        </member>
+        <member name="P:Primes.Web.Models.IsPrimeRequest.Number">
+            <summary>
+            Gets or sets the number
+            </summary>
+        </member>
+        <member name="T:Primes.Web.Models.NextPrimeRequest">
+            <summary>
+            Model holding information of next prime number request
+            </summary>
+        </member>
+        <member name="P:Primes.Web.Models.NextPrimeRequest.Number">
+            <summary>
+            Gets or sets the number
+            </summary>
+        </member>
+        <member name="T:Primes.Web.Validators.IsPrimeRequestValidator">
+            <summary>
+            Validator class for <see cref="T:Primes.Web.Models.IsPrimeRequest" />
+            </summary>
+        </member>
+        <member name="M:Primes.Web.Validators.IsPrimeRequestValidator.#ctor">
+            <summary>
+            Create instance of of <see cref="T:Primes.Web.Models.IsPrimeRequest"/>
+            </summary>
+        </member>
+        <member name="T:Primes.Web.Validators.NextPrimeRequestValidator">
+            <summary>
+            Validator class for <see cref="T:Primes.Web.Models.NextPrimeRequest" />
+            </summary>
+        </member>
+        <member name="M:Primes.Web.Validators.NextPrimeRequestValidator.#ctor">
+            <summary>
+            Create instance of of <see cref="T:Primes.Web.Validators.NextPrimeRequestValidator"/>
+            </summary>
+        </member>
+    </members>
+</doc>

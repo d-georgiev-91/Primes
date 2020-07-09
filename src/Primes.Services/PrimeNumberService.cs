@@ -2,8 +2,10 @@
 
 namespace Primes.Services
 {
+    /// <inheritdoc cref="IPrimeNumberService"/>
     public class PrimeNumberService : IPrimeNumberService
     {
+        /// <inheritdoc cref="IPrimeNumberService.IsPrimeNumber"/>
         public ServiceResult<bool> IsPrimeNumber(ulong number)
         {
             if (number <= 3)
@@ -29,6 +31,7 @@ namespace Primes.Services
             return ServiceResult<bool>.Create(true);
         }
 
+        /// <inheritdoc cref="IPrimeNumberService.NextPrimeNumber"/>
         public ServiceResult<ulong> NextPrimeNumber(ulong number)
         {
             while (true)

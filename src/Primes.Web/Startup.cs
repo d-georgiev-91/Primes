@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using System.Reflection;
 using Autofac;
 using FluentValidation.AspNetCore;
@@ -7,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Primes.Web
 {
@@ -28,6 +31,8 @@ namespace Primes.Web
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Primes API", Version = "v1" });
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+                c.AddFluentValidationRules();
             });
         }
 
