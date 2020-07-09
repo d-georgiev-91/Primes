@@ -4,16 +4,16 @@ namespace Primes.Services
 {
     public class PrimeNumberService : IPrimeNumberService
     {
-        public bool IsPrimeNumber(ulong number)
+        public ServiceResult<bool> IsPrimeNumber(ulong number)
         {
             if (number <= 3)
             {
-                return number > 1;
+                return ServiceResult<bool>.Create(number > 1);
             }
 
             if (number % 2 == 0 || number % 3 == 0)
             {
-                return false;
+                return ServiceResult<bool>.Create(false);
             }
 
             var limit = (ulong)Math.Floor(Math.Sqrt(number));
@@ -22,13 +22,33 @@ namespace Primes.Services
             {
                 if (number % i == 0 || number % (i + 2) == 0)
                 {
-                    return false;
+                    return ServiceResult<bool>.Create(false);
                 }
             }
 
-            return true;
+            return ServiceResult<bool>.Create(true);
         }
 
-        public ulong NextPrimeNumber(ulong number) => throw new System.NotImplementedException();
+        public ServiceResult<ulong> NextPrimeNumber(ulong number)
+        {
+            while (true)
+            {
+                if (number == ulong.MaxValue)
+                {
+                    return ServiceResult<ulong>.Create()
+                        .AddError(ErrorType.UnsupportedOperation, 
+                            "No implementation for bigger numbers than 64-bit integer");
+                }
+
+                number++;
+
+                var isPrimeNumberResult = IsPrimeNumber(number);
+
+                if (!isPrimeNumberResult.HasErrors && isPrimeNumberResult.Data)
+                {
+                    return ServiceResult<ulong>.Create(number);
+                }
+            }
+        }
     }
 }

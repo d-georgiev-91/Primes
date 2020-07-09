@@ -2,8 +2,8 @@
 {
     public interface IPrimeNumberService
     {
-        public bool IsPrimeNumber(ulong number);
+        public ServiceResult<bool> IsPrimeNumber(ulong number);
 
-        public ulong NextPrimeNumber(ulong number);
+        public ServiceResult<ulong> NextPrimeNumber(ulong number);
     }
 }

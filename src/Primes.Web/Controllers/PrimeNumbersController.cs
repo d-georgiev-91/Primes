@@ -15,9 +15,20 @@ namespace Primes.Web.Controllers
 
         [HttpPost("[action]")]
         public IActionResult IsPrime(IsPrimeRequest isPrimeRequest) =>
-            Ok(_primeNumberService.IsPrimeNumber(isPrimeRequest.Number));
+            Ok(_primeNumberService.IsPrimeNumber(isPrimeRequest.Number).Data);
 
         [HttpPost("[action]")]
-        public IActionResult NextPrime(NextPrimeRequest nextPrimeRequest) => Ok(_primeNumberService.NextPrimeNumber(nextPrimeRequest.Number));
+        public IActionResult NextPrime(NextPrimeRequest nextPrimeRequest)
+        {
+
+            var result = _primeNumberService.NextPrimeNumber(nextPrimeRequest.Number);
+
+            if (result.Errors.ContainsKey(ErrorType.UnsupportedOperation))
+            {
+                return BadRequest(result.Errors[ErrorType.UnsupportedOperation].Message);
+            }
+
+            return Ok(result.Data);
+        }
     }
 }
