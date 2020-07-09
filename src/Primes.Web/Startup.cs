@@ -48,8 +48,6 @@ namespace Primes.Web
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Primes API V1");
             });
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseAuthorization();
