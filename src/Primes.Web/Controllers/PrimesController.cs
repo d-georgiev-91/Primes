@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Primes.Web.Models;
 
 namespace Primes.Web.Controllers
 {
@@ -7,10 +8,10 @@ namespace Primes.Web.Controllers
     [Route("[controller]")]
     public class GatewayController : ControllerBase
     {
-        [HttpPost("[action]/{number}")]
-        public IActionResult IsPrime(ulong number) => throw new NotImplementedException();
+        [HttpPost("[action]")]
+        public IActionResult IsPrime(IsPrimeRequest isPrimeRequest) => throw new NotImplementedException();
 
-        [HttpPost("[action]/{number}")]
-        public IActionResult NextPrime(ulong number) => throw new NotImplementedException();
+        [HttpPost("[action]")]
+        public IActionResult NextPrime(NextPrimeRequest nextPrimeRequest) => throw new NotImplementedException();
     }
 }
